@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -49,6 +51,18 @@ dependencies {
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+    implementation 'com.google.dagger:hilt-android:2.33-beta'
+    kapt 'com.google.dagger:hilt-compiler:2.33-beta'
+
+// For instrumentation tests
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.33-beta'
+    kaptAndroidTest 'com.google.dagger:hilt-compiler:2.33-beta'
+
+// For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.33-beta'
+    kaptTest 'com.google.dagger:hilt-compiler:2.33-beta'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
